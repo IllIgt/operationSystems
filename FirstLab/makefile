@@ -1,0 +1,20 @@
+CC=g++
+TARGET=printH
+CFLAGS=-c -Wall
+
+SOURCEDIR=src
+OBJDIR=obj
+BUILDDIR=bin
+
+SOURCES=$(wildcard $(SOURCEDIR)/*.cpp)
+INCLUDES=$(wildcard $(SOURCEDIR)/*.h)
+OBJECTS=$(SOURCES:$(SOURCEDIR)/%.c=$(OBJDIR)/%.o)
+
+EXECUTABLE=printH
+
+
+$(TARGET): $(SOURCES) $(BUILDDIR)/$(EXECUTABLE)
+$(BUILDDIR)/$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+.cpp.o:
+	$(CC) $(CFLAGS) $< -o $@
